@@ -16,7 +16,8 @@ export class ContactForm extends Component {
     const { name, number } = this.state;
     console.log(name, number);
 
-    this.props.onSubm({ ...this.state });
+    this.props.onSubm(this.state);
+    console.log('thi.state', this.state);
     this.reset();
   };
   reset = () => {
