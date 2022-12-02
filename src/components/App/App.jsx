@@ -5,10 +5,11 @@ import { ContactForm } from 'components/ContactForm/ContactForm';
 import { ContactsList } from 'components/ContactList/ContactList';
 // import { Notification } from 'components/Section/Notification';
 import { nanoid } from 'nanoid';
-
+import { Filter } from 'components/Fiter/Filter';
 export class App extends Component {
   state = {
     contacts: [],
+    filter: '',
   };
 
   addContact = (name, number) => {
@@ -26,8 +27,20 @@ export class App extends Component {
       contacts: prevState.contacts.filter(contact => contact.id !== contactId),
     }));
   };
+  changeFilter = e => {
+    this.setState({ filter: e.currentTarget.value });
+  };
+  getVisibleContacts = () => {
+    const { filter, contacts } = this.state;
+    const normalizedFilter = filter.toLowerCase();
+
+    return contacts.filter(contact =>
+      contact.name.toLowerCase().includes(normalizedFilter)
+    );
+  };
   render() {
-    const { contacts } = this.state;
+    const { contacts, filter } = this.state;
+    const visibleContacts = this.getVisibleContacts();
     return (
       <div>
         <GlobalStyle />
@@ -39,9 +52,10 @@ export class App extends Component {
           />
         </ContainerWrap>
         <ContainerWrap title="Contacts">
+          <Filter value={filter} onChange={this.changeFilter} />
           {contacts.length > 0 && (
             <ContactsList
-              contacts={contacts}
+              contacts={visibleContacts}
               onDeleteContact={this.deleteContact}
             />
           )}
