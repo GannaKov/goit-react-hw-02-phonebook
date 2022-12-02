@@ -10,18 +10,22 @@ export class App extends Component {
   state = {
     contacts: [],
   };
+
   addContact = (name, number) => {
     const newContact = {
       id: nanoid(),
       name,
       number,
     };
-
     this.setState(prevState => ({
       contacts: [newContact, ...prevState.contacts],
     }));
   };
-
+  deleteContact = contactId => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(contact => contact.id !== contactId),
+    }));
+  };
   render() {
     const { contacts } = this.state;
     return (
@@ -35,7 +39,12 @@ export class App extends Component {
           />
         </ContainerWrap>
         <ContainerWrap title="Contacts">
-          {contacts.length > 0 && <ContactsList items={contacts} />}
+          {contacts.length > 0 && (
+            <ContactsList
+              contacts={contacts}
+              onDeleteContact={this.deleteContact}
+            />
+          )}
         </ContainerWrap>
       </div>
     );
