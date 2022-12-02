@@ -13,14 +13,23 @@ export class App extends Component {
   };
 
   addContact = (name, number) => {
-    const newContact = {
-      id: nanoid(),
-      name,
-      number,
-    };
-    this.setState(prevState => ({
-      contacts: [newContact, ...prevState.contacts],
-    }));
+    const { contacts } = this.state;
+    const checkName = contacts
+      .map(contact => contact.name.toLowerCase())
+      .some(contact => contact === name.toLowerCase());
+    console.log(checkName);
+    if (!checkName) {
+      const newContact = {
+        id: nanoid(),
+        name,
+        number,
+      };
+      this.setState(prevState => ({
+        contacts: [newContact, ...prevState.contacts],
+      }));
+    } else {
+      window.alert(`${name} is already in contacts `);
+    }
   };
   deleteContact = contactId => {
     this.setState(prevState => ({
