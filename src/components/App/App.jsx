@@ -10,11 +10,11 @@ export class App extends Component {
   state = {
     contacts: [],
   };
-  addContact = data => {
+  addContact = (name, number) => {
     const newContact = {
       id: nanoid(),
-      name: data.name,
-      number: data.number,
+      name,
+      number,
     };
 
     this.setState(prevState => ({
@@ -23,11 +23,7 @@ export class App extends Component {
   };
 
   render() {
-    const a = this.state.contacts[0];
-    console.log(a);
-    // // const { id, name, number } = contacts;
-    // console.log(a.name);
-
+    const { contacts } = this.state;
     return (
       <div>
         <GlobalStyle />
@@ -39,7 +35,7 @@ export class App extends Component {
           />
         </ContainerWrap>
         <ContainerWrap title="Contacts">
-          <ContactsList />
+          {contacts.length > 0 && <ContactsList items={contacts} />}
         </ContainerWrap>
       </div>
     );
