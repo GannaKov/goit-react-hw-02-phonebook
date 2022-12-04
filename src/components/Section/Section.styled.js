@@ -1,7 +1,12 @@
 import styled from 'styled-components';
 
+export const Section=styled.section` 
+padding: 30px 0; 
+`
 export const Container = styled.div`
-  padding: 60px 0;
+padding-left:50px;
+  width:500px;
+  
 `;
 
 export const Title = styled.h2`

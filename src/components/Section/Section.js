@@ -1,13 +1,13 @@
 import PropTypes from 'prop-types';
 
-import { Container, Title } from './Section.styled';
+import { Section, Container, Title } from './Section.styled';
 
 export function ContainerWrap({ title, children }) {
-  return (
-    <Container>
-      {title && <Title>{title}</Title>}
-      {children}
-    </Container>
+  return (<Section> <Container>
+    {title && <Title>{title}</Title>}
+    {children}
+  </Container></Section>
+   
   );
 }
 
