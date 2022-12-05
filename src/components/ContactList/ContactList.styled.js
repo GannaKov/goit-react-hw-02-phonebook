@@ -1,9 +1,17 @@
 import styled from 'styled-components';
 
  export const ContactList = styled.ul`
+ display: flex;
+ align-items: flex-start;
+ flex-direction:column;
+ gap: 10px;
+ font-size: 20px;
+ padding: 0;
+ margin: 0;
+`;
  
 
-`
+
 export const ContactListItem =styled.li`:not(:last-child){margin-bottom:8px}`
 export const FormInput = styled.input`
     padding-left: 10px;

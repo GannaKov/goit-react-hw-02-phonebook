@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
 import  {Form,FormInput,ModalSubmitBtn,FormLabel} from "components/ContactForm/ContactForm.styled"
 
 export class ContactForm extends Component {

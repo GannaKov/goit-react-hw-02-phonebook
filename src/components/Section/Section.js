@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-
 import { Section, Container, Title } from './Section.styled';
 
 export function ContainerWrap({ title, children }) {

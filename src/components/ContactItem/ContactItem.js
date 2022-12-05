@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { ContactItemSpan } from './ContactItem.styled';
-// import PropTypes from 'prop-types';
+
 export function ContactItem({ contact: { name, number } }) {
   return (
     <>
@@ -10,3 +11,12 @@ export function ContactItem({ contact: { name, number } }) {
     </>
   );
 }
+
+ContactItem.propTypes={
+  contacts: PropTypes.arrayOf(
+    PropTypes.shape({  
+      name: PropTypes.string.isRequired,
+      number: PropTypes.string.isRequired,
+    })
+  ),
+};

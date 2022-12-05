@@ -4,7 +4,6 @@ export const FiltrLabel = styled.label `margin-bottom:15px;
 display: flex;
 flex-direction: column;
 align-items: center;
-margin-bottom: 8px;
 `
 export const FiltrInput = styled.input`
     padding-left: 10px;

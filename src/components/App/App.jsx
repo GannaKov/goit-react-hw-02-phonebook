@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import { nanoid } from 'nanoid';
 import { GlobalStyle } from 'CreateGlobalStyle';
 import { ContainerWrap } from 'components/Section/Section';
 import { ContactForm } from 'components/ContactForm/ContactForm';
 import { ContactsList } from 'components/ContactList/ContactList';
-// import { Notification } from 'components/Section/Notification';
-import { nanoid } from 'nanoid';
 import { Filter } from 'components/Fiter/Filter';
+import { Title } from './App.styled';
+
 export class App extends Component {
   state = {
     contacts: [],
@@ -17,7 +18,6 @@ export class App extends Component {
     const checkName = contacts
       .map(contact => contact.name.toLowerCase())
       .some(contact => contact === name.toLowerCase());
-    console.log(checkName);
     if (!checkName) {
       const newContact = {
         id: nanoid(),
@@ -51,9 +51,15 @@ export class App extends Component {
     const { contacts, filter } = this.state;
     const visibleContacts = this.getVisibleContacts();
     return (
-      <div>
+      <div  style={{
+        height: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        color: '#010101',
+      }}>
         <GlobalStyle />
-        <h1>Phonebook</h1>
+        <Title>Phonebook</Title>
         <ContainerWrap>
           <ContactForm
             onSubm={this.addContact}
